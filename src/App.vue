@@ -27,10 +27,19 @@ export default {
                         }
                     })
                     .then(function (response) {
+
                         // metto la risposta in un arrey
                         store.myMovies = response.data.results;
+
+                        // metto tutte le lingue in un array
+                        store.allLanguage = response.data.results.original_language;
+
+                        console.log(store.allLanguage);
                         console.log(store.myMovies);
                     });
+            }
+            else if (store.myString.length == 0) {
+                store.myMovies = [];
             }
         }
     },

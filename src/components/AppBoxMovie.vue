@@ -8,7 +8,11 @@ export default {
         }
     },
     methods: {
-
+        getFlag(movie) {
+            if (movie.original_language == 'en') {
+                return 'https://www.bandiere-mondo.it/data/flags/h80/gb-eng.webp'
+            }
+        }
     }
 }
 </script>
@@ -16,7 +20,7 @@ export default {
 <!-- ------------------------------------------------------------------------------- -->
 
 <template>
-    <div class="box-movie" v-for="(oneMovie, i) in store.myMovies">
+    <div class="box-movie" v-for="(oneMovie, i) in store.myMovies" :key="i">
 
         <h3>
             {{ oneMovie.title }}
@@ -35,9 +39,10 @@ export default {
 
         <div class="box-original_language">
             <h5>Lingua originale</h5>
-            <h6>
-                {{ oneMovie.original_language }}
-            </h6>
+
+            <div class="flag-lang">
+                <img class="w-100" :src="getFlag(oneMovie)" alt="">
+            </div>
         </div>
 
         <br>
@@ -58,9 +63,14 @@ export default {
 .box-movie {
     width: calc((100% / 5) - 30px);
     margin-right: auto;
+    margin-left: auto;
     padding: 15px;
     // debug
     height: 500px;
     background-color: lightcoral;
+
+    .flag-lang {
+        width: 40px;
+    }
 }
 </style>
