@@ -58,6 +58,7 @@ export default {
 .box-movie {
     width: calc((100% / 5) - 30px);
     margin-right: auto;
+    padding: 15px;
     // debug
     height: 500px;
     background-color: lightcoral;

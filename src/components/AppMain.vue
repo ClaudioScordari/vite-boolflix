@@ -33,7 +33,8 @@ export default {
 
 <style lang="scss" scoped>
 main {
-    height: calc(100vh - 30px);
+    height: calc(100vh - 100px);
+    overflow-y: auto;
     background-color: #525659;
 
     .all-movies {

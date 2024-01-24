@@ -19,12 +19,12 @@ export default {
     <header>
         <div class="my-container bg-dark d-flex justify-content-between align-items-center">
 
-            <h1 class="text-danger">
+            <h1 class="text-danger ms-4">
                 BOOLFLIX
             </h1>
 
             <div class="form-container">
-                <form @submit.prevent="$emit('sendEvent')">
+                <form @submit.prevent="$emit('sendEvent')" class="me-4">
                     <input class="me-3" type="text" placeholder="Scrivi un titolo di un film" v-model="store.myString">
 
                     <button type="submit">Cerca</button>
@@ -38,7 +38,11 @@ export default {
 <!-- ------------------------------------------------------------------------------- -->
 
 <style lang="scss" scoped>
-.my-container {
-    padding: 20px;
+header {
+    height: 100px;
+
+    .my-container {
+        height: 100%;
+    }
 }
 </style>
