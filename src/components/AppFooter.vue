@@ -2,13 +2,13 @@
 import { store } from '../store.js';
 
 export default {
-    data(){
+    data() {
         return {
             store
         }
     },
     methods: {
-        
+
     }
 }
 </script>
@@ -17,12 +17,10 @@ export default {
 
 <template>
     <footer>
-        footer
+
     </footer>
 </template>
 
 <!-- ------------------------------------------------------------------------------- -->
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

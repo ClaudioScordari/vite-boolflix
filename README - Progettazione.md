@@ -2,7 +2,7 @@
 
 - **STORE**:
 	- testo della searchbar vuota collegata all'input con un v-model - myString
-	- mia API completa di tutte le sue parti, compresi i parametri dei film presenti nell'input
+	- mia API completa di tutte le sue parti, compreso il testo del film presente nell'input - fullApi
 
 - **COMPONENTI PRESENTI**:
 	1. App.vue
@@ -12,7 +12,9 @@
 				- api_key= ... resto della mia API
 				
 	1. AppHeader.vue
-		- searchbar
+        - *form* che contiente: - intercettare evento 'submit.prevent'
+            - searchbar
+            - pulsante - al click del pulsante parte la chiamata API
 
 	2. AppMain.vue
 		- contenitore principale di tutti i film

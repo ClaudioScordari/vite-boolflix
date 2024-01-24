@@ -6,9 +6,9 @@ import axios from "axios";
 import { store } from './store.js';
 
 export default {
-    data(){
+    data() {
         return {
-            store // in questo caso il nome della chiave, e il nome del valore della chiave coincidono... quindi si può lasciare store
+            store
         }
     },
     components: {
@@ -16,13 +16,25 @@ export default {
         AppMain,
         AppFooter
     },
-    methods: {},
-    mounted(){
-        axios
-            .get('url')
-            .then((response) => {
-
-            });
+    methods: {
+        callApi() {
+            // chiamata API
+            if (store.myString.length > 0) {
+                axios
+                    .get(store.fullApi, {
+                        params: {
+                            query: store.myString
+                        }
+                    })
+                    .then(function (response) {
+                        // metto la risposta in un arrey
+                        store.myMovies = response.data.results;
+                        console.log(store.myMovies);
+                    });
+            }
+        }
+    },
+    mounted() {
     }
 }
 </script>
@@ -30,13 +42,13 @@ export default {
 <!-- ------------------------------------------------------------------------------- -->
 
 <template>
+    <div class="my-container">
+        <AppHeader @sendEvent="callApi" />
 
-    <AppHeader/>
+        <AppMain />
 
-    <AppMain/>
-
-    <AppFooter/>
-
+        <AppFooter />
+    </div>
 </template>
 
 <!-- ------------------------------------------------------------------------------- -->
