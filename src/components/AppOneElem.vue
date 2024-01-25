@@ -108,10 +108,12 @@ export default {
     }
 
     .info {
+        padding: 10px;
+        max-width: 300px;
         color: white;
         position: absolute;
-        top: 15px;
-        left: 15px;
+        top: 0px;
+        left: 0px;
         display: none;
     }
 
