@@ -42,7 +42,7 @@ export default {
 <template>
     <div class="box-movie-series">
 
-        <!-- <img class="h-100" :src="store.urlImg + url_image" alt=""> -->
+        <img class="main-img h-100" :src="store.urlImg + url_image" alt="">
 
         <div class="info">
 
@@ -98,9 +98,32 @@ export default {
 
 <style lang="scss" scoped>
 .box-movie-series {
-    width: calc(100% / 5);
+    width: 342px;
     height: 450px;
-    margin-bottom: 20px;
+    position: relative;
+    margin-right: 20px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    .info {
+        color: white;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        display: none;
+    }
+
+    &:hover {
+        img.main-img {
+            filter: brightness(0.3);
+        }
+
+        .info {
+            display: block;
+        }
+    }
 
     .flag-lang {
         margin-left: 10px;
@@ -108,15 +131,13 @@ export default {
         width: 40px;
     }
 
-    .stars-vote {
-
-        .white-stars {
-            color: white;
-        }
-
-        .yellow-stars {
-            color: yellow;
-        }
+    .white-stars {
+        color: white;
     }
+
+    .yellow-stars {
+        color: yellow;
+    }
+
 }
 </style>

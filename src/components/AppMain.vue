@@ -25,7 +25,7 @@ export default {
 <template>
     <main>
 
-        <h1 v-if="store.myMovies.length > 0" class="ms-4 mt-3">
+        <h1 v-if="store.myMovies.length > 0" class="ms-4 my-4">
             Film
         </h1>
 
@@ -33,7 +33,7 @@ export default {
             Cerca un film o una serie
         </h1>
 
-        <div class="all-movies d-flex flex-wrap w-100">
+        <div class="all-movies d-flex">
             <AppOneElem v-for="(oneMovie, i) in store.myMovies" :key="i" :title_name="oneMovie.title"
                 :origin_lang="oneMovie.original_language" :origin_title_name="oneMovie.original_title"
                 :voteAverage="getVote(oneMovie.vote_average)" :url_image="oneMovie.poster_path" />
@@ -41,11 +41,11 @@ export default {
 
         <hr> <!-- ---------------------------------------------------------------------------------------- -->
 
-        <h1 v-if="store.mySeries.length > 0" class="ms-4 mt-3">
+        <h1 v-if="store.mySeries.length > 0" class="ms-4 my-4">
             Serie Tv
         </h1>
 
-        <div class="all-series d-flex flex-wrap w-100">
+        <div class="all-series d-flex">
             <AppOneElem v-for="(oneSerie, i) in store.mySeries" :key="i" :title_name="oneSerie.name"
                 :origin_lang="oneSerie.original_language" :origin_title_name="oneSerie.original_name"
                 :voteAverage="getVote(oneSerie.vote_average)" :url_image="oneSerie.poster_path" />
@@ -64,8 +64,8 @@ main {
 
     .all-movies,
     .all-series {
-        padding: 30px;
-        // gap: 30px;
+        height: 450px;
+        overflow-x: auto;
     }
 
     hr {
