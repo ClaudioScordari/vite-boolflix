@@ -9,7 +9,10 @@ export default {
         }
     },
     methods: {
-
+        getVote(vote) {
+            let finalVote = 0;
+            return finalVote = Math.floor(vote) % 5 + 1;
+        }
     },
     components: {
         AppOneElem
@@ -33,7 +36,7 @@ export default {
         <div class="all-movies d-flex flex-wrap w-100">
             <AppOneElem v-for="(oneMovie, i) in store.myMovies" :key="i" :title_name="oneMovie.title"
                 :origin_lang="oneMovie.original_language" :origin_title_name="oneMovie.original_title"
-                :voteAverage="oneMovie.vote_average" />
+                :voteAverage="getVote(oneMovie.vote_average)" :url_image="oneMovie.poster_path" />
         </div>
 
         <hr> <!-- ---------------------------------------------------------------------------------------- -->
@@ -45,7 +48,7 @@ export default {
         <div class="all-series d-flex flex-wrap w-100">
             <AppOneElem v-for="(oneSerie, i) in store.mySeries" :key="i" :title_name="oneSerie.name"
                 :origin_lang="oneSerie.original_language" :origin_title_name="oneSerie.original_name"
-                :voteAverage="oneSerie.vote_average" />
+                :voteAverage="getVote(oneSerie.vote_average)" :url_image="oneSerie.poster_path" />
         </div>
 
     </main>
@@ -62,7 +65,7 @@ main {
     .all-movies,
     .all-series {
         padding: 30px;
-        gap: 30px;
+        // gap: 30px;
     }
 
     hr {

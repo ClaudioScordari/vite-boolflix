@@ -20,13 +20,19 @@ export default {
                 return flag += 'kr.svg';
             }
             return flag + language + '.svg';
+        },
+        voteToStars(index) {
+            while (!(this.voteAverage <= index)) {
+                return 'yellow-stars'
+            }
         }
     },
     props: {
         title_name: String,
         origin_title_name: String,
         origin_lang: String,
-        voteAverage: Number
+        voteAverage: Number,
+        url_image: String
     }
 }
 </script>
@@ -35,39 +41,56 @@ export default {
 
 <template>
     <div class="box-movie-series">
-        <h3>
-            {{ title_name }}
-        </h3>
 
-        <br>
+        <!-- <img class="h-100" :src="store.urlImg + url_image" alt=""> -->
 
-        <div class="box-original_title">
-            <h4>Titolo originale</h4>
-            <h6>
-                {{ origin_title_name }}
-            </h6>
+        <div class="info">
+
+            <h3>
+                {{ title_name }}
+            </h3>
+
+            <br>
+
+            <div class="box-original_title">
+                <h4>
+                    Titolo originale
+                </h4>
+
+                <h6>
+                    {{ origin_title_name }}
+                </h6>
+            </div>
+
+            <br>
+
+            <div class="box-original_language">
+                <h5>Lingua originale</h5>
+
+                <span class="fw-bold">
+                    {{ origin_lang }}
+                </span>
+
+                <span class="flag-lang">
+                    <img class="w-100" :src="getFlag(origin_lang)" alt="">
+                </span>
+            </div>
+
+            <br>
+
+            <div class="box-vote">
+                <h5>
+                    Voto dalla critica
+                </h5>
+
+                <span class="stars-vote">
+                    {{ voteAverage }}
+                    <i class="fa-solid fa-star white-stars" :class="voteToStars(i)" v-for="(star, i) in 5"></i>
+                </span>
+            </div>
+
         </div>
 
-        <br>
-
-        <div class="box-original_language">
-            <h5>Lingua originale</h5>
-
-            <span class="fw-bold">{{ origin_lang }}</span>
-
-            <span class="flag-lang">
-                <img class="w-100" :src="getFlag(origin_lang)" alt="">
-            </span>
-        </div>
-
-        <br>
-
-        <div class="box-vote">
-            <h5>Voto dalla critica</h5>
-            <h6>
-                {{ voteAverage }}
-            </h6>
-        </div>
     </div>
 </template>
 
@@ -75,18 +98,25 @@ export default {
 
 <style lang="scss" scoped>
 .box-movie-series {
-    width: calc((100% / 5) - 30px);
-    margin-right: auto;
-    margin-left: auto;
-    padding: 15px;
-    // debug
-    min-height: 500px;
-    background-color: lightcoral;
+    width: calc(100% / 5);
+    height: 450px;
+    margin-bottom: 20px;
 
     .flag-lang {
         margin-left: 10px;
         display: inline-block;
         width: 40px;
+    }
+
+    .stars-vote {
+
+        .white-stars {
+            color: white;
+        }
+
+        .yellow-stars {
+            color: yellow;
+        }
     }
 }
 </style>

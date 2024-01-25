@@ -29,6 +29,7 @@ export default {
                     .then(function (response) {
                         // metto la risposta in un arrey
                         store.myMovies = response.data.results;
+                        console.log(store.myMovies);
                     });
             }
             else if (store.myString.length == 0) {
