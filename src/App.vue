@@ -18,28 +18,41 @@ export default {
     },
     methods: {
         callApi() {
-            // chiamata API
+            // chiamata API film
             if (store.myString.length > 0) {
                 axios
-                    .get(store.fullApi, {
+                    .get(store.fullApiMovies, {
                         params: {
                             query: store.myString
                         }
                     })
                     .then(function (response) {
-
                         // metto la risposta in un arrey
                         store.myMovies = response.data.results;
-
-                        // metto tutte le lingue in un array
-                        store.allLanguage = response.data.results.original_language;
-
-                        console.log(store.allLanguage);
-                        console.log(store.myMovies);
                     });
             }
             else if (store.myString.length == 0) {
                 store.myMovies = [];
+            }
+
+            /************************************************************************************************/
+
+            // chiamata API serie tv
+            if (store.myString.length > 0) {
+                axios
+                    .get(store.fullApiSeries, {
+                        params: {
+                            query: store.myString
+                        }
+                    })
+                    .then(function (response) {
+                        // metto la risposta in un arrey
+                        store.mySeries = response.data.results;
+                        console.log(store.mySeries);
+                    });
+            }
+            else if (store.myString.length == 0) {
+                store.mySeries = [];
             }
         }
     },

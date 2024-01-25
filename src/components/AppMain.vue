@@ -1,6 +1,6 @@
 <script>
 import { store } from '../store.js';
-import AppBoxMovie from "../components/AppBoxMovie.vue";
+import AppOneElem from "../components/AppOneElem.vue";
 
 export default {
     data() {
@@ -12,7 +12,7 @@ export default {
 
     },
     components: {
-        AppBoxMovie
+        AppOneElem
     }
 }
 </script>
@@ -21,11 +21,33 @@ export default {
 
 <template>
     <main>
+
+        <h1 v-if="store.myMovies.length > 0" class="ms-4 mt-3">
+            Film
+        </h1>
+
+        <h1 v-else="" class="ms-4 mt-3">
+            Cerca un film o una serie
+        </h1>
+
         <div class="all-movies d-flex flex-wrap w-100">
-
-            <AppBoxMovie />
-
+            <AppOneElem v-for="(oneMovie, i) in store.myMovies" :key="i" :title_name="oneMovie.title"
+                :origin_lang="oneMovie.original_language" :origin_title_name="oneMovie.original_title"
+                :voteAverage="oneMovie.vote_average" />
         </div>
+
+        <hr> <!-- ---------------------------------------------------------------------------------------- -->
+
+        <h1 v-if="store.mySeries.length > 0" class="ms-4 mt-3">
+            Serie Tv
+        </h1>
+
+        <div class="all-series d-flex flex-wrap w-100">
+            <AppOneElem v-for="(oneSerie, i) in store.mySeries" :key="i" :title_name="oneSerie.name"
+                :origin_lang="oneSerie.original_language" :origin_title_name="oneSerie.original_name"
+                :voteAverage="oneSerie.vote_average" />
+        </div>
+
     </main>
 </template>
 
@@ -37,9 +59,14 @@ main {
     overflow-y: auto;
     background-color: #525659;
 
-    .all-movies {
+    .all-movies,
+    .all-series {
         padding: 30px;
         gap: 30px;
+    }
+
+    hr {
+        border: 2px solid grey;
     }
 }
 </style>

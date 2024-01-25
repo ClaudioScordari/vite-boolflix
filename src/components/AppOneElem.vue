@@ -8,11 +8,25 @@ export default {
         }
     },
     methods: {
-        getFlag(movie) {
-            if (movie.original_language == 'en') {
-                return 'https://www.bandiere-mondo.it/data/flags/h80/gb-eng.webp'
+        getFlag(language) {
+
+            let flag = 'https://flagicons.lipis.dev/flags/4x3/';
+
+            if (language == 'en') {
+                return flag += 'gb.svg';
+            } else if (language == 'ja') {
+                return flag += 'jp.svg';
+            } else if (language == 'ko') {
+                return flag += 'kr.svg';
             }
+            return flag + language + '.svg';
         }
+    },
+    props: {
+        title_name: String,
+        origin_title_name: String,
+        origin_lang: String,
+        voteAverage: Number
     }
 }
 </script>
@@ -20,10 +34,9 @@ export default {
 <!-- ------------------------------------------------------------------------------- -->
 
 <template>
-    <div class="box-movie" v-for="(oneMovie, i) in store.myMovies" :key="i">
-
+    <div class="box-movie-series">
         <h3>
-            {{ oneMovie.title }}
+            {{ title_name }}
         </h3>
 
         <br>
@@ -31,7 +44,7 @@ export default {
         <div class="box-original_title">
             <h4>Titolo originale</h4>
             <h6>
-                {{ oneMovie.original_title }}
+                {{ origin_title_name }}
             </h6>
         </div>
 
@@ -40,9 +53,11 @@ export default {
         <div class="box-original_language">
             <h5>Lingua originale</h5>
 
-            <div class="flag-lang">
-                <img class="w-100" :src="getFlag(oneMovie)" alt="">
-            </div>
+            <span class="fw-bold">{{ origin_lang }}</span>
+
+            <span class="flag-lang">
+                <img class="w-100" :src="getFlag(origin_lang)" alt="">
+            </span>
         </div>
 
         <br>
@@ -50,26 +65,27 @@ export default {
         <div class="box-vote">
             <h5>Voto dalla critica</h5>
             <h6>
-                {{ oneMovie.vote_average }}
+                {{ voteAverage }}
             </h6>
         </div>
-
     </div>
 </template>
 
 <!-- ------------------------------------------------------------------------------- -->
 
 <style lang="scss" scoped>
-.box-movie {
+.box-movie-series {
     width: calc((100% / 5) - 30px);
     margin-right: auto;
     margin-left: auto;
     padding: 15px;
     // debug
-    height: 500px;
+    min-height: 500px;
     background-color: lightcoral;
 
     .flag-lang {
+        margin-left: 10px;
+        display: inline-block;
         width: 40px;
     }
 }
