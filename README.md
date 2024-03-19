@@ -1,7 +1,5 @@
-# Vue 3 + Vite
+**Descrizione del Progetto - Replica di Netflix con API di TheMovieDB**
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Sviluppo dell'interfaccia utente e acquisizione dell'integrazione di API esterne.
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Creazione replica semplificata di Netflix, integrando le API di TheMovieDB per ottenere informazioni sui film e sulle serie TV. Il focus era sulla familiarizzazione con le chiamate API e la creazione di un'interfaccia utente simile a Netflix. Gestione con successo delle richieste API e della visualizzare dei dati in modo coerente nell'applicazione. 
